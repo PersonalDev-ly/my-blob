@@ -121,11 +121,11 @@ nav {
   display: flex;
   align-items: center;
   background: linear-gradient(
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0.9)
+      rgba(255, 255, 255, 0.92),
+      rgba(255, 255, 255, 0.92)
     ),
-    url("https://source.unsplash.com/random/1920x1080/?code") no-repeat center
-      center/cover;
+    url("https://source.unsplash.com/random/1920x1080/?programming") no-repeat
+      center center/cover;
 }
 
 .home-content {
@@ -133,6 +133,35 @@ nav {
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
+}
+
+.profile-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.profile-container:hover {
+  transform: translateY(-5px);
+}
+
+.profile-image {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 5px 15px rgba(74, 107, 255, 0.3);
+  animation: float 3s ease-in-out infinite;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .home-content h1 {
@@ -143,12 +172,133 @@ nav {
 
 .home-content h1 span {
   color: var(--primary-color);
+  position: relative;
+  display: inline-block;
 }
 
-.home-content p {
+.home-content h1 span::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease;
+}
+
+.home-content h1:hover span::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.typing-container {
+  min-height: 30px;
+  margin: 20px 0;
+}
+
+.typing-text {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.typing-text::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+}
+
+.bio {
   font-size: 1.2rem;
-  margin-bottom: 30px;
+  margin: 25px 0;
   color: var(--secondary-color);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 30px 0;
+}
+
+.social-links a {
+  color: var(--dark-color);
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  padding: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(74, 107, 255, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .profile-container {
+    padding: 20px;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .home-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .typing-text {
+    font-size: 1.2rem;
+  }
+
+  .bio {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .social-links {
+    gap: 15px;
+  }
+
+  .social-links a {
+    font-size: 1.5rem;
+  }
 }
 
 /* 关于我部分样式 */

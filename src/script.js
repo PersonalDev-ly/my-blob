@@ -11,6 +11,70 @@ document.addEventListener("DOMContentLoaded", function () {
   const year = now.getFullYear();
   document.getElementById("currentYear").textContent = year;
 
+  // 打字机效果类
+  class TypeWriter {
+    constructor(txtElement, words, wait = 3000) {
+      this.txtElement = txtElement;
+      this.words = words;
+      this.txt = "";
+      this.wordIndex = 0;
+      this.wait = parseInt(wait, 10);
+      this.type();
+      this.isDeleting = false;
+    }
+
+    type() {
+      // 当前单词索引
+      const current = this.wordIndex % this.words.length;
+      // 获取完整的单词
+      const fullTxt = this.words[current];
+
+      // 检查是否处于删除状态
+      if (this.isDeleting) {
+        // 删除字符
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+      } else {
+        // 添加字符
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+      }
+
+      // 插入txt到元素
+      this.txtElement.innerHTML = this.txt;
+
+      // 初始打字速度
+      let typeSpeed = 100;
+
+      if (this.isDeleting) {
+        typeSpeed /= 2; // 删除速度更快
+      }
+
+      // 如果单词完成
+      if (!this.isDeleting && this.txt === fullTxt) {
+        // 在单词结束时暂停
+        typeSpeed = this.wait;
+        // 设置删除状态
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.txt === "") {
+        this.isDeleting = false;
+        // 移动到下一个单词
+        this.wordIndex++;
+        // 在开始打字前暂停
+        typeSpeed = 500;
+      }
+
+      setTimeout(() => this.type(), typeSpeed);
+    }
+  }
+
+  // 初始化打字机效果
+  const txtElement = document.querySelector(".typing-text");
+  const words = ["前端开发者", "后端工程师", "全栈开发者", "技术爱好者"];
+  const wait = 2000;
+
+  if (txtElement) {
+    new TypeWriter(txtElement, words, wait);
+  }
+
   // 菜单按钮点击事件
   menuBtn.addEventListener("click", function () {
     navLinks.classList.toggle("active");
