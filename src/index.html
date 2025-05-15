@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的个人博客</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- 导航栏 -->
+    <nav>
+      <div class="nav-content">
+        <div class="logo">
+          <a href="#home">MyBlog</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home">首页</a></li>
+          <li><a href="#about">关于我</a></li>
+          <li><a href="#skills">技能</a></li>
+          <li><a href="#projects">项目</a></li>
+          <li><a href="#contact">联系我</a></li>
+        </ul>
+        <div class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 首页部分 -->
+    <section id="home" class="home">
+      <div class="home-content">
+        <h1>你好，我是<span>刘洋</span></h1>
+        <p>欢迎来到我的个人博客</p>
+        <a href="#about" class="btn">了解更多</a>
+      </div>
+    </section>
+
+    <!-- 关于我部分 -->
+    <section id="about" class="about">
+      <h2 class="section-title">关于我</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            我是一名充满热情的开发者，专注于创建优秀的Web应用程序。我热爱学习新技术，并且享受解决复杂问题的过程。
+          </p>
+          <p>
+            在过去的几年里，我参与了多个项目的开发，积累了丰富的实践经验。我相信技术可以改变世界，而我正在为此努力。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技能部分 -->
+    <section id="skills" class="skills">
+      <h2 class="section-title">技能专长</h2>
+      <div class="skills-content">
+        <div class="skill-card">
+          <i class="fas fa-code"></i>
+          <h3>前端开发</h3>
+          <p>
+            HTML5, CSS3, JavaScript, Typescript, Vue全家桶, React, 微信小程序
+          </p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-database"></i>
+          <h3>后端开发</h3>
+          <p>Node.js, Python, SQL, Java, SpringBoot, SpringCloud, Redis</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>响应式设计</h3>
+          <p>Bootstrap, Media Queries</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-server"></i>
+          <h3>运维技术</h3>
+          <p>Docker, CI/CD, Linux, Shell, Nginx, AWS/阿里云</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 项目部分 -->
+    <section id="projects" class="projects">
+      <h2 class="section-title">我的项目</h2>
+      <div class="projects-content">
+        <div class="project-card">
+          <h3>个人博客网站</h3>
+          <p>使用HTML、CSS和JavaScript开发的响应式个人博客网站。</p>
+          <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <h3>待办事项应用</h3>
+          <p>一个简单但功能完整的待办事项管理应用。</p>
+          <div class="project-tags">
+            <span>JavaScript</span>
+            <span>LocalStorage</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section id="contact" class="contact">
+      <h2 class="section-title">联系我</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>l13704095419@163.com</p>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-git-alt"></i>
+            <p>https://gitee.com/lyDevelop</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+      <p>
+        &copy; <span id="currentYear"></span> 我的个人博客. All rights reserved.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
