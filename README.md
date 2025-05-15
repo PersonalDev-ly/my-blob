@@ -1,37 +1,29 @@
-# MyBlog
+## 介绍
 
-#### 介绍
-这个项目是一个简单的单页个人博客，主要功能包括首页、关于我、技能、项目和联系页面，具有响应式设计和平滑滚动效果。
+这个个人博客项目是一个单页应用程序，使用原生HTML、CSS和JavaScript构建。  
+以下是关于该项目的详细介绍：
 
-#### 软件架构
-软件架构说明
+## 技术栈
 
+- 前端技术：
+  - HTML5：用于构建网页的基本结构。
+  - CSS3：用于网页的样式设计，包括布局、颜色、字体等。  
+          使用媒体查询功能完成画面响应式布局。
+  - JavaScript：用于实现网页的动态效果和交互功能。
+- 前端工具：
+  - Font Awesome：用于添加图标和符号。
 
-#### 安装教程
+## 主要功能
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- 首页：展示网站的核心内容。
+- 关于我页面：包含个人介绍。
+- 技能页面：列出个人技能。
+- 项目页面：展示个人项目经验。
+- 联系页面：提供联系方式。
 
-#### 使用说明
+## 亮点
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+- 响应式设计：使用Bootstrap的栅格系统和媒体查询，实现了在不同设备上的自适应布局。
+- 平滑滚动效果：通过JavaScript实现了平滑滚动，提升了用户在不同页面之间的导航体验。
+- 动态菜单：通过JavaScript实现了菜单的动态展开和收起，增加了交互性。
+- 滚动动画：为技能、项目卡片和联系部分添加了滚动动画，提升了视觉效果和用户体验。
