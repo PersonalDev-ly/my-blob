@@ -1,3 +1,118 @@
+// 联系方式数据
+const contactData = [
+  {
+    icon: "fas fa-envelope",
+    info: "l13704095419@163.com",
+    link: "mailto:l13704095419@163.com",
+  },
+  {
+    icon: "fab fa-git-alt",
+    info: "https://gitee.com/lyDevelop",
+    link: "https://gitee.com/lyDevelop",
+  },
+  {
+    icon: "fas fa-phone-alt",
+    info: "137-0409-5419",
+    link: "tel:13704095419",
+  },
+];
+
+// 技能数据
+const skillsData = [
+  {
+    icon: "fas fa-code",
+    title: "前端开发",
+    description:
+      "HTML5, CSS3, JavaScript, Typescript, Vue全家桶, React, 微信小程序",
+  },
+  {
+    icon: "fas fa-database",
+    title: "后端开发",
+    description:
+      "Node.js, Express, Python, Django, SQL(Postgres、MySQL、SQLServer), Java, SpringBoot, SpringCloud, Redis",
+  },
+  {
+    icon: "fas fa-mobile-alt",
+    title: "响应式设计",
+    description: "Bootstrap, Media Queries",
+  },
+  {
+    icon: "fas fa-server",
+    title: "运维技术",
+    description: "Docker, CI/CD, Linux, Shell, Nginx, AWS/阿里云",
+  },
+];
+
+// 项目数据
+const projectsData = [
+  {
+    title: "个人博客网站",
+    description: "使用HTML、CSS和JavaScript开发的响应式个人博客网站。",
+    links: [
+      {
+        url: "https://gitee.com/lyDevelop/my-blog",
+        text: "查看源码",
+        icon: "fab fa-git-alt",
+      },
+    ],
+    tags: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    title: "后台管理系统模板",
+    description:
+      "一个基于Vue3、TypeScript、Vite、Element-Plus、SpringBoot构建的前后端分离的后台管理系统模板",
+    links: [
+      {
+        url: "https://gitee.com/lyDevelop/vue3-template-server",
+        text: "后端源码",
+        icon: "fab fa-git-alt",
+      },
+      {
+        url: "https://gitee.com/lyDevelop/vue3-template",
+        text: "前端源码",
+        icon: "fab fa-git-alt",
+      },
+    ],
+    tags: ["SpringBoot", "Vue", "Element-Plus"],
+  },
+  {
+    title: "社区团购平台-微服务端",
+    description: "SpringCloud实现的社区团购微服务端接口",
+    links: [
+      {
+        url: "https://gitee.com/lyDevelop/youxuan-parent",
+        text: "服务端源码",
+        icon: "fab fa-git-alt",
+      },
+    ],
+    tags: ["SpringCloud", "Redis", "RabbitMQ", "ElasticSearch", "MySQL"],
+  },
+  {
+    title: "社区团购平台-平台管理端",
+    description: "vue + Element-UI 实现的后台管理端",
+    links: [
+      {
+        url: "https://gitee.com/lyDevelop/ssyx-admin",
+        text: "管理端源码",
+        icon: "fab fa-git-alt",
+      },
+    ],
+    tags: ["Vue", "Element-UI"],
+  },
+  {
+    title: "社区团购平台-小程序",
+    description: "uniapp 实现的小程序端",
+    links: [
+      {
+        url: "https://gitee.com/lyDevelop/groupby-mp",
+        text: "小程序源码",
+        icon: "fab fa-git-alt",
+      },
+    ],
+    tags: ["Vue", "uni-app"],
+  },
+];
+
 // 等待DOM完全加载
 document.addEventListener("DOMContentLoaded", function () {
   // 获取DOM元素
@@ -10,6 +125,112 @@ document.addEventListener("DOMContentLoaded", function () {
   const now = new Date();
   const year = now.getFullYear();
   document.getElementById("currentYear").textContent = year;
+
+  // 渲染技能卡片
+  function renderSkills() {
+    const skillsContainer = document.querySelector(".skills-content");
+    if (!skillsContainer) return;
+
+    skillsContainer.innerHTML = "";
+
+    skillsData.forEach((skill) => {
+      const skillCard = document.createElement("div");
+      skillCard.className = "skill-card";
+
+      skillCard.innerHTML = `
+        <i class="${skill.icon}"></i>
+        <h3>${skill.title}</h3>
+        <p>${skill.description}</p>
+      `;
+
+      skillsContainer.appendChild(skillCard);
+    });
+  }
+
+  // 渲染项目卡片
+  function renderProjects() {
+    const projectsContainer = document.querySelector(".projects-content");
+    if (!projectsContainer) return;
+
+    projectsContainer.innerHTML = "";
+
+    projectsData.forEach((project) => {
+      const projectCard = document.createElement("div");
+      projectCard.className = "project-card";
+
+      // 创建链接HTML
+      const linksHTML = project.links
+        .map(
+          (link) => `
+        <a href="${link.url}" class="project-link" target="_blank">
+          <i class="${link.icon}"></i> ${link.text}
+        </a>
+      `
+        )
+        .join("");
+
+      // 创建标签HTML
+      const tagsHTML = `
+        <div class="project-tags">
+          ${project.tags.map((tag) => `<span>${tag}</span>`).join("")}
+        </div>
+      `;
+
+      projectCard.innerHTML = `
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+        ${linksHTML}
+        ${tagsHTML}
+      `;
+
+      projectsContainer.appendChild(projectCard);
+    });
+  }
+
+  // 渲染联系方式
+  function renderContacts() {
+    const contactContainer = document.querySelector(".contact-info");
+    if (!contactContainer) return;
+
+    contactContainer.innerHTML = "";
+
+    contactData.forEach((contact) => {
+      const contactItem = document.createElement("div");
+      contactItem.className = "contact-item";
+
+      // 创建带有链接的内容
+      contactItem.innerHTML = `
+        <i class="${contact.icon}"></i>
+        <p>${contact.info}</p>
+      `;
+
+      // 为整个联系项添加点击事件
+      if (contact.link) {
+        contactItem.style.cursor = "pointer";
+        contactItem.addEventListener("click", () => {
+          window.location.href = contact.link;
+        });
+
+        // 添加悬停效果
+        contactItem.addEventListener("mouseenter", () => {
+          contactItem.style.transform = "translateY(-5px)";
+          contactItem.querySelector("i").style.color = "var(--primary-color)";
+        });
+
+        contactItem.addEventListener("mouseleave", () => {
+          contactItem.style.transform = "translateY(0)";
+          contactItem.querySelector("i").style.color = "";
+        });
+      }
+
+      contactContainer.appendChild(contactItem);
+    });
+  }
+
+  // 调用渲染函数
+  renderSkills();
+  renderProjects();
+  renderContacts();
 
   // 打字机效果类
   class TypeWriter {
