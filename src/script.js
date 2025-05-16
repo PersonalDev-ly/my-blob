@@ -365,6 +365,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // 为logo链接也添加平滑滚动效果
+  const logoLink = document.querySelector(".logo a");
+  if (logoLink) {
+    logoLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href");
+      const targetSection = document.querySelector(targetId);
+      const targetPosition = targetSection.offsetTop - navHeight;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    });
+  }
+
   // 添加滚动动画 - 针对技能、项目卡片和联系项
   const animateOnScroll = function () {
     const elements = document.querySelectorAll(
