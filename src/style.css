@@ -103,6 +103,15 @@ nav {
   font-weight: 700;
   color: var(--primary-color);
   text-decoration: none;
+  text-shadow: 1px 1px 0 #fff, 2px 2px 0 rgba(74, 107, 255, 0.2),
+    3px 3px 0 rgba(74, 107, 255, 0.3), 4px 4px 0 rgba(74, 107, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.logo a:hover {
+  transform: translate(-2px, -2px);
+  text-shadow: 1px 1px 0 #fff, 3px 3px 0 rgba(74, 107, 255, 0.2),
+    5px 5px 0 rgba(74, 107, 255, 0.3), 7px 7px 0 rgba(74, 107, 255, 0.4);
 }
 
 .nav-links {
