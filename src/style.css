@@ -22,6 +22,22 @@ body {
   background-color: #f5f5f5;
   color: #333;
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home {
+  margin-top: 77px;
 }
 
 section {
@@ -117,7 +133,7 @@ nav {
 
 /* 首页部分样式 */
 .home {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   background: linear-gradient(
@@ -126,6 +142,8 @@ nav {
     ),
     url("https://source.unsplash.com/random/1920x1080/?programming") no-repeat
       center center/cover;
+  padding-top: 80px; /* 匹配导航栏高度 */
+  box-sizing: border-box; /* 包含padding在高度计算内 */
 }
 
 .home-content {
@@ -270,6 +288,11 @@ nav {
 
 /* 响应式调整 */
 @media screen and (max-width: 768px) {
+  .home {
+    min-height: 100vh;
+    padding: 20px 0;
+  }
+
   .profile-container {
     padding: 20px;
   }
