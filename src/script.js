@@ -144,6 +144,19 @@ const DataService = {
       ],
       tags: ["Vue", "uni-app"],
     },
+    {
+      title: "Express Framework",
+      description: "基于 TypeScript 装饰器实现的 Express.js 框架",
+      links: [
+        {
+          url: "https://gitee.com/lyDevelop/express-framework",
+          text: "服务端源码",
+          icon: "fab fa-git-alt",
+          ariaLabel: "查看服务端源码",
+        },
+      ],
+      tags: ["TypeScript", "Express"],
+    },
   ]),
 };
 
