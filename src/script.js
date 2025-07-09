@@ -116,7 +116,7 @@ const DataService = {
           ariaLabel: "查看微服务端源码",
         },
       ],
-      tags: ["SpringCloud", "Redis", "RabbitMQ", "ElasticSearch", "MySQL"],
+      tags: ["SpringCloud", "Java"],
     },
     {
       title: "社区团购平台-平台管理端",
@@ -180,11 +180,20 @@ const DataService = {
  * @property {Object} templates - HTML模板集合
  */
 const RenderEngine = {
+  // 滚动方向跟踪
+  scroll: {
+    lastPosition: 0,
+    direction: "down", // 'up' 或 'down'
+  },
+
   init() {
     this.cacheDOM();
     this.setupTemplates();
     this.renderAll();
     this.setupIntersectionObserver();
+
+    // 初始化滚动位置
+    this.scroll.lastPosition = window.scrollY;
   },
 
   // 缓存DOM元素引用
@@ -234,9 +243,11 @@ const RenderEngine = {
           <div class="project-card">
             <h3>${project.title}</h3>
             <p>${project.description}</p>
-            ${linksHTML}
-            <div class="project-tags">
-              ${project.tags.map((tag) => `<span>${tag}</span>`).join("")}
+            <div class="project-card-footer">
+              ${linksHTML}
+              <div class="project-tags">
+                ${project.tags.map((tag) => `<span>${tag}</span>`).join("")}
+              </div>
             </div>
           </div>
         `;
@@ -429,15 +440,21 @@ const RenderEngine = {
 
   // 滚动事件处理
   handleScroll() {
+    // 检测滚动方向
+    const currentPosition = window.scrollY;
+    this.scroll.direction =
+      currentPosition > this.scroll.lastPosition ? "up" : "down";
+    this.scroll.lastPosition = currentPosition;
+
     // 导航栏样式
-    const scrollClass = window.scrollY > 50 ? "scrolled" : "";
+    const scrollClass = currentPosition > 50 ? "scrolled" : "";
     this.dom.nav.className = scrollClass;
 
     // 更新活动导航项
     let current = "";
     this.dom.sections.forEach((section) => {
       const sectionTop = section.offsetTop - this.dom.navHeight - 10;
-      if (window.scrollY >= sectionTop) {
+      if (currentPosition >= sectionTop) {
         current = section.getAttribute("id");
       }
     });
@@ -459,7 +476,9 @@ const RenderEngine = {
 
     animateElements.forEach((el) => {
       el.style.opacity = "0";
-      el.style.transform = "translateY(30px)";
+      // 使用与滚动方向一致的初始动画状态
+      // 默认滚动方向是 down，所以元素应该从上方进入
+      el.style.transform = "translateY(-30px)";
       el.style.transition = `all ${CONFIG.ANIMATION.DURATION} ${CONFIG.ANIMATION.EASING}`;
     });
   },
@@ -469,10 +488,18 @@ const RenderEngine = {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          // 根据滚动方向设置不同的动画效果
           entry.target.style.opacity = entry.isIntersecting ? "1" : "0";
-          entry.target.style.transform = entry.isIntersecting
-            ? "translateY(0)"
-            : "translateY(30px)";
+
+          if (entry.isIntersecting) {
+            entry.target.style.transform = "translateY(0)";
+          } else {
+            // 根据滚动方向决定元素消失的方向
+            entry.target.style.transform =
+              this.scroll.direction === "down"
+                ? "translateY(30px)" // 向下滚动时，元素从上方进入
+                : "translateY(-30px)"; // 向上滚动时，元素从下方进入
+          }
         });
       },
       {

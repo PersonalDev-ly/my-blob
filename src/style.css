@@ -678,6 +678,9 @@ section {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .project-card::before {
@@ -734,6 +737,12 @@ section {
   margin-bottom: 20px;
   color: var(--secondary-color);
   line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* 链接和标签容器 */
+.project-card-footer {
+  margin-top: auto;
 }
 
 .project-tags {
