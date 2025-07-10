@@ -46,3 +46,9 @@ src/
 2. 连接 Git 仓库
 3. 选择项目目录
 4. 点击部署
+
+## 项目预览地址
+
+https://src-five-theta.vercel.app/
+
+注意：由于 Vercel 限制，项目预览地址不支持国内 IP 访问。
